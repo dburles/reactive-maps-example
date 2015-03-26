@@ -30,6 +30,7 @@ if (Meteor.isClient) {
         },
         removed: function (oldDocument) {
           markers[oldDocument._id].setMap(null);
+          google.maps.event.clearInstanceListeners(markers[oldDocument._id]);
           delete markers[oldDocument._id];
         }
       });
